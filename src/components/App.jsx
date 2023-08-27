@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Notify } from 'notiflix';
 import './App.css';
 
-import ContactForm from './ContactForm';
+import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 
