@@ -9,16 +9,15 @@ export const Item = styled.li`
   font-weight: 500;
 
   button {
-    height: 35px;
+    height: 30px;
     border: none;
     border-radius: 6px;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
-    font-size: 18px;
+      font-size: 16px;
     font-weight: 700;
-    cursor: pointer;
+  
   }
 
   button:is(:hover, :focus) {
-    background-color: #ff8585;
+    background-color: gray;
   }
 `;
