@@ -14,14 +14,21 @@ export default class ContactForm extends Component {
     number: '',
   };
 
-  handleSubmit = e => {
+  normalizeName = (name) => {
+    const lowerCaseName = name.toLowerCase();
+    return lowerCaseName.charAt(0).toUpperCase() + lowerCaseName.slice(1);
+  };
+
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const { name, number } = this.state;
     const { onAddContact } = this.props;
     const id = nanoid(5);
 
-    onAddContact({ id, name, number });
+    const normalizedName = this.normalizeName(name);
+
+    onAddContact({ id, name: normalizedName, number });
 
     this.setState({
       name: '',
@@ -29,7 +36,7 @@ export default class ContactForm extends Component {
     });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { name, value } = e.target;
 
     this.setState({ [name]: value });
