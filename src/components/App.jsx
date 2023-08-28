@@ -26,7 +26,7 @@ export default class App extends Component {
     const { name } = contact;
 
     if (contacts.find(contact => contact.name === name)) {
-          Notify.failure(`${name} is already in contacts`);
+      Notify.failure(`${name} is already in contacts`);
       return;
     }
 
@@ -47,18 +47,25 @@ export default class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
-  render() {
+  getFilteredContacts = () => {
     const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase().trim())
+    );
+  };
+
+  render() {
+    const { filter } = this.state;
+    const filteredContacts = this.getFilteredContacts();
 
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.handleAddContact} />
         <h2>Contacts</h2>
-        <Filter onFilter={this.handleFilter} filter={this.state.filter} />
+        <Filter onFilter={this.handleFilter} filter={filter} />
         <ContactList
-          contacts={contacts}
-          filter={filter}
+          contacts={filteredContacts}
           onDeleteContact={this.handleDeleteContact}
         />
       </div>
