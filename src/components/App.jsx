@@ -25,7 +25,7 @@ export default class App extends Component {
     const { contacts } = this.state;
     const { name } = contact;
 
-    if (contacts.find(contact => contact.name === name)) {
+    if (contacts.find(existingContact => existingContact.name === name)) {
       Notify.failure(`${name} is already in contacts`);
       return;
     }
